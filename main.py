@@ -13,9 +13,14 @@ chosen_word = word_list[random.randint(0,2)];
 
 guess = input('Please guess a letter.').lower();
 print(chosen_word)
-if guess in chosen_word:
-  print("yes")
-else:
-  print("No")
+wordArr = []
+for _word in chosen_word:
+  if(_word == guess):
+    wordArr.append(guess)
+  else:
+    wordArr.append('_')
+
+print(wordArr)
+
 
 
