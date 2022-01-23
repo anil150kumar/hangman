@@ -10,7 +10,64 @@ word_list = ["aardvark", "baboon", "camel"]
 #TODO-3 - Check if the letter the user guessed (guess) is one of the letters in the chosen_word.
 
 chosen_word = word_list[random.randint(0,2)];
+stages = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''']
 
+i = 7;
 
 print(chosen_word)
 wordArr = [];
@@ -22,18 +79,29 @@ for _word in chosen_word:
 
 while  '_'  in wordArr:
   guess = input('Please guess a letter.').lower();
-  strArr = [i for i, ltr in enumerate(chosen_word) if ltr == guess] 
+  strArr = [i for i, ltr in enumerate(chosen_word) if ltr == guess]
+  currentWord = wordArr
+  selectI = 0
   if(guess in chosen_word):
     for _index in strArr:
       if(wordArr[_index] == '_'):
         wordArr[_index] = guess
+        selectI = 1
         break;
+  if (selectI == 0):
+    i -= 1
+    print(stages[i])
+   
+  if(i == 0):
+    print("You Loose!")
+    break;
   print(wordArr)
 
 def _find(s, ch):
     return [i for i, ltr in enumerate(s) if ltr == ch]
 
-print(wordArr)
+if i != 0:
+  print("You Win!")
 
 
 
