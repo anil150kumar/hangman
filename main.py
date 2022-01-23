@@ -11,14 +11,27 @@ word_list = ["aardvark", "baboon", "camel"]
 
 chosen_word = word_list[random.randint(0,2)];
 
-guess = input('Please guess a letter.').lower();
+
 print(chosen_word)
-wordArr = []
+wordArr = [];
+
+
+
 for _word in chosen_word:
-  if(_word == guess):
-    wordArr.append(guess)
-  else:
     wordArr.append('_')
+
+while  '_'  in wordArr:
+  guess = input('Please guess a letter.').lower();
+  strArr = [i for i, ltr in enumerate(chosen_word) if ltr == guess] 
+  if(guess in chosen_word):
+    for _index in strArr:
+      if(wordArr[_index] == '_'):
+        wordArr[_index] = guess
+        break;
+  print(wordArr)
+
+def _find(s, ch):
+    return [i for i, ltr in enumerate(s) if ltr == ch]
 
 print(wordArr)
 
